@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -22,21 +22,37 @@
     <script src="js/main.js"></script>
 </head>
 <body>
+<c:if test="${sessionScope.containsKey('name')}">
+    <c:if test="${sessionScope.containsKey('admin')}">
+        <c:redirect url="list-devices" />
+    </c:if>
+    <c:if test="${sessionScope.containsKey('user')}">
+        <c:redirect url="request" />
+    </c:if>
+</c:if>
+
 <div class="login-container full-cover-background">
     <div class="form-container">
         <p class="text-center" style="margin-top: 17px;">
             <i class="zmdi zmdi-account-circle zmdi-hc-5x"></i>
         </p>
         <h4 class="text-center all-tittles" style="margin-bottom: 30px;">inicia sesión con tu cuenta</h4>
-        <form action="home.html">
+        <form action="login" method="post">
             <div class="group-material-login">
-                <input type="text" class="material-login-control" required="" maxlength="70">
+                <c:if test="${param['message']!=null}">
+                    <c:if test="${param['message']=='error'}">
+                        <div class="alert alert-warning" role="alert">
+                            Usuario y/o contraseña incorrectas
+                        </div>
+                    </c:if>
+                </c:if>
+                <input id="floatingInput" name="nickname" type="email" class="material-login-control" required="" maxlength="70">
                 <span class="highlight-login"></span>
                 <span class="bar-login"></span>
                 <label><i class="zmdi zmdi-account"></i> &nbsp; Nombres</label>
             </div><br>
             <div class="group-material-login">
-                <input type="password" class="material-login-control" required="" maxlength="70">
+                <input id="floatingPassword" name="password" type="password" class="material-login-control" required="" maxlength="70">
                 <span class="highlight-login"></span>
                 <span class="bar-login"></span>
                 <label><i class="zmdi zmdi-lock"></i> &nbsp; Contraseña</label>

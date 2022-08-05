@@ -7,13 +7,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class DaoAuthentication {
+public class  DaoAuthentication {
     public  BeanAuthentication login(String nickname, String password){
         BeanAuthentication userAuthentication= new BeanAuthentication();
         try
                 (
                         Connection con= MySQLConnection.getConnection();
-                        PreparedStatement pstm= con.prepareStatement("SELECT * FROM users WHERE  nickname=? AND password= ?;");
+                        PreparedStatement pstm= con.prepareStatement("SELECT * FROM usuarios WHERE  correo=? AND contraseña= ?;");
                 )
         {
             pstm.setString(1,nickname);
@@ -21,9 +21,9 @@ public class DaoAuthentication {
             ResultSet rs = pstm.executeQuery();
 
             while (rs.next()){
-                userAuthentication.setUserId(rs.getInt("users_id"));
-                userAuthentication.setNickname(rs.getString("nickname"));
-                userAuthentication.setRol(rs.getString("rol"));
+                userAuthentication.setUserId(rs.getInt("idusuarios"));
+                userAuthentication.setNickname(rs.getString("correo"));
+                userAuthentication.setRol(rs.getString("idRol"));
             }
 
         }catch (Exception e){

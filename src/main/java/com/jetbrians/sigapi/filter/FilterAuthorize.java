@@ -1,11 +1,15 @@
 package com.jetbrians.sigapi.filter;
 
-import jakarta.servlet.*;
-import jakarta.servlet.annotation.*;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
+
+import com.jetbrians.sigapi.control.ServiceAuthentication;
+import com.jetbrians.sigapi.model.BeanAuthentication;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebFilter(filterName = "FilterAuthorize",
@@ -18,9 +22,9 @@ public class FilterAuthorize implements Filter {
 
     public void init(FilterConfig config) throws ServletException {
         System.out.println("Filtro iniciado");
-        whiteList= new String[2];
-        whiteList[0]="/login";
-        whiteList[1]="/index.jsp";
+        whiteList = new String[2];
+        whiteList[0] = "/login";
+        whiteList[1] = "/index.jsp";
     }
 
     public void destroy() {
@@ -28,10 +32,10 @@ public class FilterAuthorize implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-        HttpServletRequest req= (HttpServletRequest) request;
+        HttpServletRequest req = (HttpServletRequest) request;
         String path = req.getServletPath();
         System.out.println("Entra a "+path);
-
+        //Saber si valido la sesion o no ?
         boolean isPublic = false;
         for (String item:whiteList){
             if (item.equals(path)) {
@@ -59,7 +63,5 @@ public class FilterAuthorize implements Filter {
                 ((HttpServletResponse) response).sendRedirect("index.jsp");
             }
         }
-
-        chain.doFilter(request, response);
     }
 }
