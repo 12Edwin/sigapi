@@ -2,19 +2,17 @@ package com.jetbrians.sigapi.filter;
 
 
 
-import com.jetbrians.sigapi.control.ServiceAuthentication;
-import com.jetbrians.sigapi.model.BeanAuthentication;
-
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
+import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "FilterAuthorize",
-        urlPatterns ={
-        "/*"
+@WebFilter(
+        filterName = "FilterAuthorize",
+        urlPatterns = {
+                "/*"
         }
 )
 public class FilterAuthorize implements Filter {
@@ -22,9 +20,12 @@ public class FilterAuthorize implements Filter {
 
     public void init(FilterConfig config) throws ServletException {
         System.out.println("Filtro iniciado");
-        whiteList = new String[2];
+        whiteList = new String[5];
         whiteList[0] = "/login";
         whiteList[1] = "/index.jsp";
+        whiteList[2] = "/signup.jsp";
+        whiteList[3] = "/resources/css2/style.css";
+        whiteList[4] = "/signup";
     }
 
     public void destroy() {
@@ -34,7 +35,7 @@ public class FilterAuthorize implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest req = (HttpServletRequest) request;
         String path = req.getServletPath();
-        System.out.println("Entra a "+path);
+        System.out.println("Entro a "+path);
         //Saber si valido la sesion o no ?
         boolean isPublic = false;
         for (String item:whiteList){

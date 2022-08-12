@@ -1,0 +1,193 @@
+
+:root{
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #0eac8d;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+
+.login html{
+    height: 100%;
+}
+
+.login{
+    margin: 0;
+    padding: 0;
+    background-image: url(https://bit.ly/3Q8VmNC);
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.form-box{
+    background: #0eac8d8c;
+    width: 500px;
+    color: #FFF;
+    padding: 40px;
+    text-align: center;    
+}
+
+.form-box .title{
+    font-weight: 500;
+}
+
+.form-box a{
+    color:white;
+    text-decoration: underline;
+}
+
+.form-box .info{
+    border: 0;
+    background: var(--body-color);
+    display: block;
+    margin: 20px auto;
+    padding: 14px 10px;
+    text-align: center;
+    border: 2px solid var(--primary-color-light);
+    width: 300px;
+    outline: none;
+    color: var(--text-color);
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.form-box .btn{
+    border: 0;
+    background: var(--primary-color-light);
+    display: block;
+    margin: 20px auto;
+    padding: 14px 10px;
+    text-align: center;
+    border: 2px solid var(--primary-color-light);
+    width: 150px;
+    outline: none;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.form-box .btn:hover{
+    background: none;
+}
+
+.form-box .info:focus{ 
+    width: 400px;
+    border-color: #FFF;
+    background: var(--primary-color-light);
+    color: var(--text-color);
+}
+
+.form-box span{
+    font-weight: 900;
+}
+
+.register{
+    display:flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #049474, #04265f );
+    padding: 10px;
+    overflow: hidden;
+}
+
+.container{
+    max-height: calc(100% + 50px);
+    max-width: 1200px;
+    width: 100%;
+    background: var(--body-color);
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+.container form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0 12px 0;
+    justify-content: space-between;
+}
+
+form .user-details .input-box{
+    width: calc(100% / 3 - 10px);
+}
+
+.user-details .input-box .details{
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.user-details .input-box input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color-light);
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: var(--tran-03);
+}
+
+.user-details .input-box select{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color-light);
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: var(--tran-03);
+}
+
+.user-details .input-box input:focus{
+    border-color:var(--primary-color);
+}
+
+.user-details .input-box select:focus{
+    border-color:var(--primary-color);
+}
+
+form .button{
+    height: 45px;
+    margin: -62px -300px 0px 700px;
+}
+
+form .button input{
+    height: 100%;
+    left: 50px;
+    width: 20%;
+    outline: none;
+    color: var(--primary-color-light);
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    background: var(--primary-color);
+    cursor: pointer;
+}
+
+@media (max-width: 584px){
+    .container{
+        max-width: 100%;
+    }
+
+    form .user-details .input-box{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    
+}

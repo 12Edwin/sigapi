@@ -1,7 +1,7 @@
 package com.jetbrians.sigapi.model;
 
 public class BeanAuthentication {
-    private  long userId;
+    private  String userId;
     private String nickname;
     private String rol;
 
@@ -9,17 +9,17 @@ public class BeanAuthentication {
 
     }
 
-    public BeanAuthentication(long userId, String nickname, String rol) {
+    public BeanAuthentication(String userId, String nickname, String rol) {
         this.userId = userId;
         this.nickname = nickname;
         this.rol = rol;
     }
 
-    public long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

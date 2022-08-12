@@ -21,7 +21,7 @@ public class  DaoAuthentication {
             ResultSet rs = pstm.executeQuery();
 
             while (rs.next()){
-                userAuthentication.setUserId(rs.getInt("idusuarios"));
+                userAuthentication.setUserId(rs.getString("id"));
                 userAuthentication.setNickname(rs.getString("correo"));
                 userAuthentication.setRol(rs.getString("idRol"));
             }
